@@ -84,7 +84,7 @@ if __name__ == '__main__':
 
         filename_without_ext = os.path.splitext(filename)[0]
         # fix title
-        if 'Views -' in filename_without_ext:
+        if '-' in filename_without_ext:
             filename_without_ext = filename_without_ext.split('-')[1]
         pyautogui.typewrite(filename_without_ext)
         click_to("next.png")
