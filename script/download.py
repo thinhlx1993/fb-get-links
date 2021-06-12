@@ -1,7 +1,7 @@
 import youtube_dl
 import os
 
-page_name = "Spasia Infotech Pvt Ltd"
+page_name = "Teeyah Music.html"
 os.makedirs(f"downloaded/{page_name}", exist_ok=True)
 
 
