@@ -39,7 +39,7 @@ def click_many(btn, region=None):
     elements = pyautogui.locateAllOnScreen(f"btn/{btn}", confidence=.8, region=region)
     number_element = len(list(pyautogui.locateAllOnScreen(f"btn/{btn}", confidence=.8, region=region)))
     for ret in elements:
-        pyautogui.click(ret, interval=0.3)
+        pyautogui.click(ret, interval=0.5)
     return number_element
 
 
