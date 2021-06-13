@@ -29,16 +29,18 @@ def click_to(btn, region=None, waiting_time=1000):
         ret = pyautogui.locateOnScreen(f"btn/{btn}", confidence=.8, region=region)
         start_count += 1
         if ret:
-            pyautogui.click(ret)
+            pyautogui.click(ret, interval=0.5)
             break
         time.sleep(0.2)
 
 
 def click_many(btn, region=None):
     logger.info(f"Click many {btn}")
-    results = pyautogui.locateAllOnScreen(f"btn/{btn}", confidence=.8, region=region)
-    for ret in results:
-        pyautogui.click(ret)
+    elements = pyautogui.locateAllOnScreen(f"btn/{btn}", confidence=.8, region=region)
+    number_element = len(list(pyautogui.locateAllOnScreen(f"btn/{btn}", confidence=.8, region=region)))
+    for ret in elements:
+        pyautogui.click(ret, interval=0.3)
+    return number_element
 
 
 def check_exist(btn, region=None):
