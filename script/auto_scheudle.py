@@ -25,13 +25,17 @@ logger.addHandler(fh)
 logger.addHandler(ch)
 
 
-def click_to(btn, region=None):
+def click_to(btn, region=None, waiting_time=1000):
     logger.info(f"Click to {btn}")
-    while True:
+    start_count = 0
+
+    while start_count > waiting_time:
         ret = pyautogui.locateOnScreen(f"btn/{btn}", confidence=.8, region=region)
+        start_count += 1
         if ret:
             pyautogui.click(ret)
             break
+        time.sleep(0.2)
 
 
 def click_many(btn, region=None):
@@ -88,6 +92,11 @@ if __name__ == '__main__':
             filename_without_ext = filename_without_ext.split('-')[1]
         pyautogui.typewrite(filename_without_ext)
         click_to("next.png")
+        time.sleep(1)
+        later_btn = pyautogui.locateCenterOnScreen("btn/later.PNG", confidence=.8)
+        if later_btn:
+            pyautogui.click(later_btn)
+
         click_to("schedule.PNG")
         schedule_x, schedule_y = waiting_for("auto_schedule.png")
 
