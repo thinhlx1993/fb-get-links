@@ -1,6 +1,7 @@
 import pyautogui
 import logging
 import time
+import random
 
 
 # create logger with 'spam_application'
@@ -21,6 +22,10 @@ logger.addHandler(fh)
 logger.addHandler(ch)
 
 
+def random_interval():
+    return random.uniform(0, 1)
+
+
 def click_to(btn, region=None, waiting_time=1000):
     logger.info(f"Click to {btn}")
     start_count = 0
@@ -29,7 +34,7 @@ def click_to(btn, region=None, waiting_time=1000):
         ret = pyautogui.locateOnScreen(f"btn/{btn}", confidence=.8, region=region)
         start_count += 1
         if ret:
-            pyautogui.click(ret, interval=0.5)
+            pyautogui.click(ret, interval=random_interval())
             break
         time.sleep(0.2)
 
@@ -39,7 +44,7 @@ def click_many(btn, region=None):
     elements = pyautogui.locateAllOnScreen(f"btn/{btn}", confidence=.8, region=region)
     number_element = len(list(pyautogui.locateAllOnScreen(f"btn/{btn}", confidence=.8, region=region)))
     for ret in elements:
-        pyautogui.click(ret, interval=0.5)
+        pyautogui.click(ret, interval=random_interval())
     return number_element
 
 
