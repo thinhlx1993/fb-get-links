@@ -142,3 +142,5 @@ cython_debug/
 /script/downloaded/
 
 .idea
+/script/uploaded/
+/script/upload/
