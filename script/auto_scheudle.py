@@ -41,7 +41,7 @@ if __name__ == '__main__':
             filename_without_ext = filename_without_ext.split('-')[1]
         pyautogui.typewrite(filename_without_ext)
         click_to("next.png")
-        click_to("later.PNG", waiting_time=5)
+        click_to("later.PNG", waiting_time=2)
         click_to("schedule.PNG")
         schedule_x, schedule_y = waiting_for("auto_schedule.png")
 
